@@ -8,34 +8,34 @@ from Split_From_Description import get_area, get_price, get_contact
 def get_link(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
-    table = soup.find('div', class_='row large-columns-1 medium-columns- small-columns-1 row-xsmall')
-    rows = table.find_all('div', class_="col-inner")
+    total_col = soup.find('div', class_='row large-columns-1 medium-columns- small-columns-1 row-xsmall')
+    col_inner = total_col.find_all('div', class_="col-inner")
     links = set()
-    for row in rows:
+    for row in col_inner:
         tag_a = row.find('a')
         curr_link = tag_a['href']
         links.add(curr_link)
     return links
 
 
-def get_title(rows):
+def get_title(col_inner):
     try:
-        title = rows.find('h2').get_text(strip=True)
+        title = col_inner.find('h2').get_text(strip=True)
     except:
         try:
-            title = rows.find('strong').get_text(strip=True)
+            title = col_inner.find('strong').get_text(strip=True)
         except:
             title = "No Info"
     return title
 
 
-def get_tag(rows):
-    tags = rows.find_all('div', dir="auto")
-    if not tags:
-        tags = rows.find_all(['p', 'ul'])
-    if not tags:
-        tags = rows.find_all('div')
-    return tags
+def get_tag(entry_content):
+    tag = entry_content.find_all('div', dir="auto")
+    if not tag:
+        tag = entry_content.find_all(['p', 'ul'])
+    if not tag:
+        tag = entry_content.find_all('div')
+    return tag
 
 
 def extract_motel(links):
@@ -44,10 +44,10 @@ def extract_motel(links):
     for link in links:
         response = requests.get(link)
         soup = BeautifulSoup(response.content, 'html.parser')
-        rows = soup.find('div', class_="entry-content single-page")
+        entry_content = soup.find('div', class_="entry-content single-page")
 
-        title = get_title(rows)
-        tags = get_tag(rows)
+        title = get_title(entry_content)
+        tags = get_tag(entry_content)
 
         description = ""
         for div in tags:
