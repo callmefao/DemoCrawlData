@@ -15,7 +15,7 @@ def get_price(description):
 
 
 def get_area(description):  # Need to fix
-    pattern = r'(\d+m2)|(\d+\s?m²)|([\d.]+\s?x\s?[\d.]+)|(\d+m\s?x\s?\d+m)'
+    pattern = r'(\d+m2)|(\d+\s?m²)|([\d.,]+\s?x\s?[\d.,]+)|(\d+m\s?x\s?\d+m)'
     area_matches = re.findall(pattern, description.lower())
     areas = set()
     for match in area_matches:

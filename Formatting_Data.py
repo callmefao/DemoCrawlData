@@ -24,7 +24,7 @@ def process_contact(pattern, contact_str):
     for match in contact_matches:
         for index, contact in enumerate(match):
             if contact:
-                return str(contact.replace('.','').replace(' ', ''))
+                return str(contact.replace('.', '').replace(' ', ''))
     return "No Info"
 
 
@@ -44,7 +44,7 @@ def process_area_group(index, area):
     if index == 0 or index == 1:
         return float(area[:area.index('m')])
     elif index == 2 or index == 3:
-        area = area.replace('m', '')
+        area = area.replace('m', '').replace(',', '.')
         x_location = area.index('x')
         return float(area[:x_location]) * float(area[x_location + 1:])
     else:
