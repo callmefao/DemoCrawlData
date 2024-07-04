@@ -1,9 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 import json
-import re
 from Split_From_Description import get_area, get_price, get_contact
-
+import re
 
 def get_link(url):
     response = requests.get(url)
@@ -32,14 +31,13 @@ def get_title(rows):
 def get_tag(rows):
     tags = rows.find_all('div', dir="auto")
     if not tags:
-        tags = rows.find_all('p')
+        tags = rows.find_all(['p', 'ul'])
     if not tags:
         tags = rows.find_all('div')
     return tags
 
 
 def extract_motel(links):
-
     Motel_info_list = []
 
     for link in links:
@@ -57,7 +55,7 @@ def extract_motel(links):
                 'link': link,
                 'title': title,
                 'description': description,
-                'price': get_price(description),
+                'price': get_price(description + title),
                 'area': get_area(description),
                 'contact': get_contact(description)
             }

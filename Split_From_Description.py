@@ -3,7 +3,7 @@ from Formatting_Data import process_price, process_area, process_contact
 
 
 def get_price(description):
-    pattern = r'(\b\d+[.,]?\d?\s?tr\b)|(\b\d+[.,]?\d{0,2}\s?triệu\b)|(\d+\s?triệu\s?\d+)|(\d+\s?tr\s?\d+)|(\d+[.\s]\d+[.,]000)'
+    pattern = r'(\d+\s?tr\s?\d+)|(\d+\s?triệu\s?\d+)|(\b\d+[.,]?\d{0,2}\s?triệu\b)|(\b\d+[.,]?\d?\s?tr\b)|(\d+[.\s]\d+[.,]000)'
     price_matches = re.findall(pattern, description.lower())
     prices = set()
     for match in price_matches:

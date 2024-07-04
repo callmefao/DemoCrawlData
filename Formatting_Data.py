@@ -29,7 +29,7 @@ def process_contact(pattern, contact_str):
 
 
 def process_price_group(index, price):
-    if index == 0 or index == 1:
+    if index == 1 or index == 0:
         return price_type_1(price)
     elif index == 2 or index == 3:
         return price_type_2(price)
@@ -51,7 +51,7 @@ def process_area_group(index, area):
         raise ValueError(f"Unsupported group index: {index}")
 
 
-def price_type_1(price):
+def price_type_2(price):
     price = price.replace(',', '.').replace(' ', '').replace('triệu', '').replace('tr', '')
     if '.' in price:
         price_int = int(price[:price.index('.')]) * 1e6 + int(price[price.index('.') + 1:]) * 1e5
@@ -60,7 +60,7 @@ def price_type_1(price):
     return price_int
 
 
-def price_type_2(price):
+def price_type_1(price):
     price = price.replace(' ', '').replace('triệu', 'tr')
     Multiply_by = [1e6, 1e5, 1e4, 1e3, 1e2, 1e1, 1e0]
     After_Million_Part = price[price.index('r') + 1:]
