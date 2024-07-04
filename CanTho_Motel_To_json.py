@@ -1,8 +1,9 @@
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 import json
+
 from Split_From_Description import get_area, get_price, get_contact
-import re
+
 
 def get_link(url):
     response = requests.get(url)
