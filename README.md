@@ -8,8 +8,8 @@ Exported the cleaned dataset to JSON and Excel for further analysis.
 
 ## JSON Data
 
-![JSON File Demo](demo/json_file.png)
+![JSON File Demo](json_demo.png)
 
 ## Excel Data
 
-![Excel File Demo](demo/xlsx_file.png)
+![Excel File Demo](xlsx_demo.png)
