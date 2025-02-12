@@ -8,7 +8,7 @@ Exported the cleaned dataset to JSON and Excel as outputs of the crawler.
 
 ## Website Overview
 
-![Web 0 Demo](new.png)
+![Web 0 Demo](website_overview.png)
 
 ## Crawler Output: JSON Data
 
