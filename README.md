@@ -1,6 +1,6 @@
 # Demo Crawl Data
 
-Extracted rental listings from the website [nhatrocantho.top](https://nhatrocantho.top/), collecting key details such as the title, price, area, phone number, and detail page link.
+Extracted rental listings from a website about Can Tho Motel, collecting key details such as the title, price, area, phone number, and detail page link.
 
 Standardized data formats for consistency.
 
